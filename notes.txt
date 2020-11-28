@@ -1,0 +1,38 @@
+Notes: 
+
+
+node 1 is running on 8080 on container 1 (not exposed to host)  
+node 2 is running on 8080 on container 2 (not exposed to host)
+
+port 8080 is configued in 2 locations:
+
+shark1/Dockerfile
+shark1/app.js
+
+shark2/Dockerfile
+shark2/app.js
+
+
+Haproxy is running on port 80 on container 3 (exposed to host port 80)
+
+Haproxy is routing traffic to node1 and node2 using round robin
+
+
+
+Test Configuration of loadbalancer 
+
+
+for i in {1..10}; do curl Public_IP/test.html; done
+
+or visit http://Public_IP/test.html  in browser
+
+
+Tutorials followed: 
+https://www.digitalocean.com/community/tutorials/how-to-build-a-node-js-application-with-docker-quickstart
+http://www.inanzzz.com/index.php/post/w14j/creating-a-single-haproxy-and-two-apache-containers-with-docker-compose
+
+
+Diagram: 
+
+https://drive.google.com/file/d/1SI7ok0ttPzQICA33SFb5MalUHWg5tEIY/view?usp=sharing
+
