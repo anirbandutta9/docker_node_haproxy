@@ -1,0 +1,33 @@
+version: '3.7'
+
+# Services
+services:
+ 
+ node1:
+   build: ./shark1
+   volumes:
+      - ./shark1/views:/home/node/app/views
+#   ports: 
+#      - 8080:8080
+
+ node2:
+   build: ./shark2
+   volumes:
+      - ./shark2/views:/home/node/app/views
+#   ports:
+#      - 8081:8081
+
+
+ haproxy_img:
+   build: ./haproxy
+   ports:
+      - 80:80
+   volumes:
+      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+
+
+
+volumes:
+   shark1:  
+   shark2:
+   haproxy:
